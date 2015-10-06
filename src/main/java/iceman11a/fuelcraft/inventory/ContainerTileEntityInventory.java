@@ -1,8 +1,9 @@
 package iceman11a.fuelcraft.inventory;
 
-import iceman11a.fuelcraft.tileentity.TileEntityFuelCraftInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.IInventory;
+import iceman11a.fuelcraft.tileentity.TileEntityFuelCraftInventory;
 
 
 public class ContainerTileEntityInventory extends ContainerFuelCraft

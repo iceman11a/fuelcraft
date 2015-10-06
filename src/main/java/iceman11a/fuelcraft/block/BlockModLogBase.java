@@ -1,18 +1,18 @@
 package iceman11a.fuelcraft.block;
 
-import iceman11a.fuelcraft.Fuelcraft;
-
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import iceman11a.fuelcraft.fuelcraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockModLogBase extends BlockRotatedPillar
 {
@@ -20,11 +20,13 @@ public class BlockModLogBase extends BlockRotatedPillar
     protected IIcon[] field_150167_a;
     @SideOnly(Side.CLIENT)
     protected IIcon[] field_150166_b;
+    @SuppressWarnings("unused")
+	private static final String __OBFID = "CL_00000266";
 
     public BlockModLogBase()
     {
         super(Material.wood);
-        this.setCreativeTab(Fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
+        this.setCreativeTab(fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
         this.setHardness(2.0F);
         this.setStepSound(soundTypeWood);
     }

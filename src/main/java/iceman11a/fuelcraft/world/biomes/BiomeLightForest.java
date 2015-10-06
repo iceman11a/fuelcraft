@@ -1,13 +1,13 @@
 package iceman11a.fuelcraft.world.biomes;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
-import iceman11a.fuelcraft.world.biomes.decorators.BiomeDecoratorMod;
-
 import java.util.Random;
 
+import iceman11a.fuelcraft.block.Blockfc;
+import iceman11a.fuelcraft.world.biomes.decorators.BiomeDecoratorMod;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
+import net.minecraft.world.gen.feature.WorldGenVines;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeLightForest extends ModBiomes{
@@ -19,8 +19,8 @@ public class BiomeLightForest extends ModBiomes{
     public BiomeLightForest(int biomeId) {
         super(biomeId);
         BiomeLightForest.treesPerChunk = 2;
-        this.topBlock = FuelcraftBlocks.lightForestGrass;
-        this.fillerBlock = FuelcraftBlocks.lightForestDirt;
+        this.topBlock = Blockfc.lightForestGrass;
+        this.fillerBlock = Blockfc.lightForestDirt;
     }
 
     /**

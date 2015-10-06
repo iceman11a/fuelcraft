@@ -1,32 +1,32 @@
 package iceman11a.fuelcraft.block;
 
-import static net.minecraftforge.common.EnumPlantType.Crop;
-import static net.minecraftforge.common.EnumPlantType.Nether;
-import static net.minecraftforge.common.EnumPlantType.Plains;
-import static net.minecraftforge.common.EnumPlantType.Water;
-import iceman11a.fuelcraft.Fuelcraft;
-
 import java.util.Random;
 
+import iceman11a.fuelcraft.fuelcraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.common.IPlantable;
+import static net.minecraftforge.common.EnumPlantType.*;
 
 public class BlockModBush extends Block implements IPlantable
 {
+    @SuppressWarnings("unused")
+	private static final String __OBFID = "CL_00000208";
+
     protected BlockModBush(Material p_i45395_1_)
     {
         super(p_i45395_1_);
         this.setTickRandomly(true);
         float f = 0.2F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 3.0F, 0.5F + f);
-        this.setCreativeTab(Fuelcraft.tabFuelcraft);
+        this.setCreativeTab(fuelcraft.tabFuelcraft); // CreativeTabs.tabDecorations);
     }
 
     protected BlockModBush()
@@ -47,7 +47,7 @@ public class BlockModBush extends Block implements IPlantable
      */
     protected boolean canPlaceBlockOn(Block p_149854_1_)
     {
-        return p_149854_1_ == FuelcraftBlocks.lightForestGrass || p_149854_1_ == FuelcraftBlocks.lightForestDirt;
+        return p_149854_1_ == Blockfc.lightForestGrass || p_149854_1_ == Blockfc.lightForestDirt;
     }
 
     /**

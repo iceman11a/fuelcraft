@@ -1,12 +1,11 @@
 package iceman11a.fuelcraft.block;
 
-import iceman11a.fuelcraft.Fuelcraft;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -17,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import iceman11a.fuelcraft.fuelcraft;
 
 public abstract class BlockModLeaves extends BlockModLeavesBase implements IShearable
 {
@@ -24,12 +24,14 @@ public abstract class BlockModLeaves extends BlockModLeavesBase implements IShea
     @SideOnly(Side.CLIENT)
     protected int field_150127_b;
     protected IIcon[][] field_150129_M = new IIcon[2][];
+    @SuppressWarnings("unused")
+	private static final String __OBFID = "CL_00000263";
 
     public BlockModLeaves()
     {
         super(Material.leaves, true);
         this.setTickRandomly(true);
-        this.setCreativeTab(Fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
+        this.setCreativeTab(fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
         this.setHardness(0.2F);
         this.setLightOpacity(1);
         this.setStepSound(soundTypeGrass);

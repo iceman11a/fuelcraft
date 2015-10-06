@@ -1,7 +1,5 @@
 package iceman11a.fuelcraft.Util;
 
-import iceman11a.fuelcraft.reference.Reference;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -110,7 +108,7 @@ public class GameLogger {
 			file = new File(fcLogFolder, "Log.log");
 			
 			writer = new FileWriter(file, true);
-			writer.write("[" + Reference.MOD_ID + "]" + "[" + level + "]" + " : " + text + newLine);
+			writer.write("[" + Details.MODID + "]" + "[" + level + "]" + " : " + text + newLine);
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();

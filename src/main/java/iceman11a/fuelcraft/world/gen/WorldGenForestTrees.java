@@ -2,7 +2,7 @@ package iceman11a.fuelcraft.world.gen;
 
 import java.util.Random;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
+import iceman11a.fuelcraft.block.Blockfc;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
@@ -122,7 +122,7 @@ public class WorldGenForestTrees extends WorldGenForestAbstractTree
 
                                     if (block1.isAir(p_76484_1_, i2, k1, k2) || block1.isLeaves(p_76484_1_, i2, k1, k2))
                                     {
-                                        this.setBlockAndNotifyAdequately(p_76484_1_, i2, k1, k2, FuelcraftBlocks.lightLeaves, 0);
+                                        this.setBlockAndNotifyAdequately(p_76484_1_, i2, k1, k2, Blockfc.lightLeaves, 0);
                                     }
                                 }
                             }
@@ -135,7 +135,7 @@ public class WorldGenForestTrees extends WorldGenForestAbstractTree
 
                         if (block.isAir(p_76484_1_, p_76484_3_, p_76484_4_ + k1, p_76484_5_) || block.isLeaves(p_76484_1_, p_76484_3_, p_76484_4_ + k1, p_76484_5_))
                         {
-                            this.setBlockAndNotifyAdequately(p_76484_1_, p_76484_3_, p_76484_4_ + k1, p_76484_5_, FuelcraftBlocks.lightLog, 0);
+                            this.setBlockAndNotifyAdequately(p_76484_1_, p_76484_3_, p_76484_4_ + k1, p_76484_5_, Blockfc.lightLog, 0);
 
 //                            if (this.vinesGrow && k1 > 0)
 //                            {

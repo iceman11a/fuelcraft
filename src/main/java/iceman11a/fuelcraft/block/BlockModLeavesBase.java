@@ -1,25 +1,28 @@
 package iceman11a.fuelcraft.block;
 
-import iceman11a.fuelcraft.Fuelcraft;
-
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import iceman11a.fuelcraft.fuelcraft;
 
 public class BlockModLeavesBase extends Block
 {
 	protected boolean field_150121_P;
+	
+    @SuppressWarnings("unused")
+	private static final String __OBFID = "CL_00000326";
 
     protected BlockModLeavesBase(Material p_i45433_1_, boolean p_i45433_2_)
     {
         super(p_i45433_1_);
         this.field_150121_P = p_i45433_2_;
-        this.setCreativeTab(Fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
+        this.setCreativeTab(fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
         this.setTickRandomly(true);
     }
 

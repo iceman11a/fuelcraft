@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
+import iceman11a.fuelcraft.block.Blockfc;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -121,9 +121,9 @@ public class LightDimensionTeleporter extends Teleporter
 
                     for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
                     {
-                        if (this.worldServerInstance.getBlock(l3, i2, l1) == FuelcraftBlocks.lightPortal)
+                        if (this.worldServerInstance.getBlock(l3, i2, l1) == Blockfc.lightPortal)
                         {
-                            while (this.worldServerInstance.getBlock(l3, i2 - 1, l1) == FuelcraftBlocks.lightPortal)
+                            while (this.worldServerInstance.getBlock(l3, i2 - 1, l1) == Blockfc.lightPortal)
                             {
                                 --i2;
                             }
@@ -158,22 +158,22 @@ public class LightDimensionTeleporter extends Teleporter
             d7 = (double)k + 0.5D;
             int i4 = -1;
 
-            if (this.worldServerInstance.getBlock(i - 1, j, k) == FuelcraftBlocks.lightPortal)
+            if (this.worldServerInstance.getBlock(i - 1, j, k) == Blockfc.lightPortal)
             {
                 i4 = 2;
             }
 
-            if (this.worldServerInstance.getBlock(i + 1, j, k) == FuelcraftBlocks.lightPortal)
+            if (this.worldServerInstance.getBlock(i + 1, j, k) == Blockfc.lightPortal)
             {
                 i4 = 0;
             }
 
-            if (this.worldServerInstance.getBlock(i, j, k - 1) == FuelcraftBlocks.lightPortal)
+            if (this.worldServerInstance.getBlock(i, j, k - 1) == Blockfc.lightPortal)
             {
                 i4 = 3;
             }
 
-            if (this.worldServerInstance.getBlock(i, j, k + 1) == FuelcraftBlocks.lightPortal)
+            if (this.worldServerInstance.getBlock(i, j, k + 1) == Blockfc.lightPortal)
             {
                 i4 = 1;
             }
@@ -474,7 +474,7 @@ public class LightDimensionTeleporter extends Teleporter
                     i4 = j2 + k3;
                     j4 = k2 + (j3 - 1) * l2;
                     flag = j3 == 0 || j3 == 3 || k3 == -1 || k3 == 3;
-                    this.worldServerInstance.setBlock(l3, i4, j4, (Block)(flag ? Blocks.stone : FuelcraftBlocks.lightPortal), 0, 2);
+                    this.worldServerInstance.setBlock(l3, i4, j4, (Block)(flag ? Blocks.stone : Blockfc.lightPortal), 0, 2);
                 }
             }
 

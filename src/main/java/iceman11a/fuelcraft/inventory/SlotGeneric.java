@@ -1,13 +1,13 @@
 package iceman11a.fuelcraft.inventory;
 
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
 
 public class SlotGeneric extends Slot {
-
-    public SlotGeneric(IInventory inventory, int slot, int posX, int posY)
+	
+	public SlotGeneric(IInventory inventory, int slot, int posX, int posY)
     {
         super(inventory, slot, posX, posY);
     }
@@ -17,4 +17,5 @@ public class SlotGeneric extends Slot {
     {
         return this.inventory.isItemValidForSlot(this.slotNumber, stack);
     }
+
 }

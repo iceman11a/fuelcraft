@@ -1,9 +1,5 @@
 package iceman11a.fuelcraft.tileentity;
 
-import iceman11a.fuelcraft.Fuelcraft;
-import iceman11a.fuelcraft.gui.GuiFuelCraftInventory;
-import iceman11a.fuelcraft.inventory.ContainerTileEntityInventory;
-import iceman11a.fuelcraft.reference.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
@@ -13,6 +9,11 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import iceman11a.fuelcraft.fuelcraft;
+import iceman11a.fuelcraft.Util.Details;
+import iceman11a.fuelcraft.gui.GuiFuelCraftInventory;
+import iceman11a.fuelcraft.inventory.ContainerTileEntityInventory;
+import iceman11a.fuelcraft.machines.Reference;
 
 public class TileEntityFuelCraftInventory extends TileEntityFuelCraft implements IInventory
 {
@@ -39,7 +40,7 @@ public class TileEntityFuelCraftInventory extends TileEntityFuelCraft implements
     @Override
     public String getInventoryName()
     {
-        return this.hasCustomInventoryName() ? this.customInventoryName : Reference.MOD_ID + ".container." + this.tileEntityName;
+        return this.hasCustomInventoryName() ? this.customInventoryName : Details.MID + ".container." + this.tileEntityName;
     }
 
     @Override
@@ -78,7 +79,7 @@ public class TileEntityFuelCraftInventory extends TileEntityFuelCraft implements
             }
             else
             {
-                Fuelcraft.logger.warn("Invalid slot number when reading inventory from NBT: " + slotNum + " (max: " + (this.itemStacks.length - 1) + ")");
+                fuelcraft.logger.warn("Invalid slot number when reading inventory from NBT: " + slotNum + " (max: " + (this.itemStacks.length - 1) + ")");
             }
         }
     }

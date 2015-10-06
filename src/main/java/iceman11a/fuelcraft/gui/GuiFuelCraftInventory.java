@@ -2,11 +2,9 @@ package iceman11a.fuelcraft.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import iceman11a.fuelcraft.inventory.ContainerTileEntityInventory;
-import iceman11a.fuelcraft.reference.ReferenceTextures;
+import iceman11a.fuelcraft.machines.ReferenceTextures;
 import iceman11a.fuelcraft.tileentity.TileEntityFuelCraftInventory;
 
 public class GuiFuelCraftInventory extends GuiContainer
@@ -18,7 +16,7 @@ public class GuiFuelCraftInventory extends GuiContainer
     {
         super(container);
         this.te = te;
-        this.guiTexture = ReferenceTextures.getGuiTexture("gui.container." + te.getTEName());
+        this.guiTexture = ReferenceTextures.getGuiTexture("gui." + te.getTEName());
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
+import iceman11a.fuelcraft.block.Blockfc;
 import iceman11a.fuelcraft.Util.GameLogHelper;
 import iceman11a.fuelcraft.world.biomes.ModBiomes;
 import net.minecraft.block.Block;
@@ -174,7 +174,7 @@ public class ChunkProviderForest implements IChunkProvider {
 							double d15 = d10 - d16;
 							for (int k3 = 0; k3 < 4; ++k3) {
 								if ((d15 += d16) > 0.0D) {
-									blocks[j3 += short1] = FuelcraftBlocks.lightStone;//these can be set to custom blocks
+									blocks[j3 += short1] = Blockfc.lightStone;//these can be set to custom blocks
 								} else if (k2 * 8 + l2 < b0) {
 									blocks[j3 += short1] = Blocks.water;//these can be set to custom blocks
 								} else {

@@ -1,13 +1,11 @@
 package iceman11a.fuelcraft.block;
 
-import iceman11a.fuelcraft.Fuelcraft;
-import iceman11a.fuelcraft.reference.ReferenceTextures;
-
 import java.util.Random;
 
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
@@ -15,6 +13,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import iceman11a.fuelcraft.fuelcraft;
 
 public class BlockModLightGrass extends BlockBasic implements IGrowable
 {
@@ -23,12 +22,17 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
     private IIcon field_149991_b;
     @SideOnly(Side.CLIENT)
     private IIcon field_149993_M;
+    
+	@SuppressWarnings("unused")
+	private static final String __OBFID = "CL_000002510";
+    
+    private static String textureModID = "fc:";
 
     public BlockModLightGrass(Material material, String blockName, SoundType stepSound)
     {
         super(material);
         this.setTickRandomly(true);
-        this.setCreativeTab(Fuelcraft.tabFuelcraft); 
+        this.setCreativeTab(fuelcraft.tabFuelcraft); // 
         this.setStepSound(stepSound);
         this.setBlockName(blockName);
         this.setBlockTextureName(blockName);
@@ -40,7 +44,7 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int p_149691_1_, int p_149691_2_)
     {
-        return p_149691_1_ == 1 ? this.field_149991_b : (p_149691_1_ == 0 ? FuelcraftBlocks.lightForestDirt.getBlockTextureFromSide(p_149691_1_) : this.blockIcon);
+        return p_149691_1_ == 1 ? this.field_149991_b : (p_149691_1_ == 0 ? Blockfc.lightForestDirt.getBlockTextureFromSide(p_149691_1_) : this.blockIcon);
     }
 
     /**
@@ -52,7 +56,7 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
         {
             if (p_149674_1_.getBlockLightValue(p_149674_2_, p_149674_3_ + 1, p_149674_4_) < 4 && p_149674_1_.getBlockLightOpacity(p_149674_2_, p_149674_3_ + 1, p_149674_4_) > 2)
             {
-                p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, FuelcraftBlocks.lightForestDirt);
+                p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, Blockfc.lightForestDirt);
             }
             else if (p_149674_1_.getBlockLightValue(p_149674_2_, p_149674_3_ + 1, p_149674_4_) >= 9)
             {
@@ -63,9 +67,9 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
                     int k1 = p_149674_4_ + p_149674_5_.nextInt(3) - 1;
                     //Block block = p_149674_1_.getBlock(i1, j1 + 1, k1);
 
-                    if (p_149674_1_.getBlock(i1, j1, k1) == FuelcraftBlocks.lightForestDirt && p_149674_1_.getBlockMetadata(i1, j1, k1) == 0 && p_149674_1_.getBlockLightValue(i1, j1 + 1, k1) >= 4 && p_149674_1_.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
+                    if (p_149674_1_.getBlock(i1, j1, k1) == Blockfc.lightForestDirt && p_149674_1_.getBlockMetadata(i1, j1, k1) == 0 && p_149674_1_.getBlockLightValue(i1, j1 + 1, k1) >= 4 && p_149674_1_.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
                     {
-                        p_149674_1_.setBlock(i1, j1, k1, FuelcraftBlocks.lightForestDirt);
+                        p_149674_1_.setBlock(i1, j1, k1, Blockfc.lightForestDirt);
                     }
                 }
             }
@@ -74,7 +78,7 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
 
     public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
-        return FuelcraftBlocks.lightForestDirt.getItemDropped(0, p_149650_2_, p_149650_3_);
+        return Blockfc.lightForestDirt.getItemDropped(0, p_149650_2_, p_149650_3_);
     }
 
     public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
@@ -96,7 +100,7 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
         }
         else if (p_149673_5_ == 0)
         {
-            return FuelcraftBlocks.lightForestDirt.getBlockTextureFromSide(p_149673_5_);
+            return Blockfc.lightForestDirt.getBlockTextureFromSide(p_149673_5_);
         }
         else
         {
@@ -108,8 +112,8 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister p_149651_1_)
     {
-        this.blockIcon = p_149651_1_.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_side");
-        this.field_149991_b = p_149651_1_.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_top");
+        this.blockIcon = p_149651_1_.registerIcon(textureModID + this.getTextureName() + "_side");
+        this.field_149991_b = p_149651_1_.registerIcon(textureModID + this.getTextureName() + "_top");
     }
 
     @SideOnly(Side.CLIENT)
@@ -137,7 +141,7 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
                     j1 += (p_149853_2_.nextInt(3) - 1) * p_149853_2_.nextInt(3) / 2;
                     k1 += p_149853_2_.nextInt(3) - 1;
 
-                    if (p_149853_1_.getBlock(i1, j1 - 1, k1) == FuelcraftBlocks.lightForestDirt && !p_149853_1_.getBlock(i1, j1, k1).isNormalCube())
+                    if (p_149853_1_.getBlock(i1, j1 - 1, k1) == Blockfc.lightForestDirt && !p_149853_1_.getBlock(i1, j1, k1).isNormalCube())
                     {
                         ++l1;
                         continue;

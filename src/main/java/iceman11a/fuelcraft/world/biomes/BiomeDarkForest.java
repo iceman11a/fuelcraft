@@ -1,10 +1,10 @@
 package iceman11a.fuelcraft.world.biomes;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
-
 import java.util.Random;
 
+import iceman11a.fuelcraft.block.Blockfc;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenVines;
 
 public class BiomeDarkForest extends ModBiomes{
 
@@ -14,8 +14,8 @@ public class BiomeDarkForest extends ModBiomes{
 		this.theBiomeDecorator.grassPerChunk = 5;
 		this.theBiomeDecorator.flowersPerChunk = 1;
 		
-		this.topBlock = FuelcraftBlocks.lightForestGrass;
-		this.fillerBlock = FuelcraftBlocks.lightForestDirt;
+		this.topBlock = Blockfc.lightForestGrass;
+		this.fillerBlock = Blockfc.lightForestDirt;
 	}
 	
 	/**
