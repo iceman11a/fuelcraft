@@ -1,0 +1,17 @@
+item.Corbamite.name=Corbamite
+item.CorCoal.name=CorCoal
+tile.BlockCorbamiteOre.name=CorbamiteOre
+tile.BlockCorCoalOre.name=CorCoalOre
+tile.lightForestGrass.name=Light Forest Grass
+tile.lightForestDirt.name=Light Forest Dirt
+tile.lightStone.name=Light Stone
+tile.lightPortal.name=Light Forest Portal
+tile.lightFire.name=Light Forest Fire
+tile.lightLog.name=Light Oak Log
+tile.lightLeaves.name=Light Leaves
+tile.effectLeaves.name=Effect Leaves
+tile.lightSapling.name=Light Sapling
+itemGroup.tabFuelcraft=Fuelcraft
+fluid.diesel.name=Diesel Fuel
+item.BucketDieselFuel.name=Bucket Diesel Fuel
+tile.fc.dieselproducer.name=Diesel Producer

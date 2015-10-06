@@ -3,7 +3,7 @@ package iceman11a.fuelcraft.world.gen;
 import java.util.Random;
 
 import iceman11a.fuelcraft.block.BlockModLightSapling;
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
+import iceman11a.fuelcraft.block.Blockfc;
 import net.minecraft.block.Block;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
@@ -11,8 +11,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class WorldGenEffectTree extends WorldGenForestAbstractTree
 {
-	private Block log = FuelcraftBlocks.lightLog;
-	private Block leaves = FuelcraftBlocks.effectLeaves;
+	private Block log = Blockfc.lightLog;
+	private Block leaves = Blockfc.effectLeaves;
 	
     @SuppressWarnings("unused")
 	private static final String __OBFID = "CL_00000432";
@@ -74,7 +74,7 @@ public class WorldGenEffectTree extends WorldGenForestAbstractTree
             {
                 Block block3 = p_76484_1_.getBlock(p_76484_3_, p_76484_4_ - 1, p_76484_5_);
 
-                boolean isSoil = block3.canSustainPlant(p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_, ForgeDirection.UP, (BlockModLightSapling)FuelcraftBlocks.lightSapling);
+                boolean isSoil = block3.canSustainPlant(p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_, ForgeDirection.UP, (BlockModLightSapling)Blockfc.lightSapling);
                 if (isSoil && p_76484_4_ < 256 - l - 1)
                 {
                     block3.onPlantGrow(p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_, p_76484_3_, p_76484_4_, p_76484_5_);

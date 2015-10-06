@@ -1,8 +1,5 @@
 package iceman11a.fuelcraft.block;
 
-import iceman11a.fuelcraft.Fuelcraft;
-import iceman11a.fuelcraft.reference.ReferenceTextures;
-
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -12,15 +9,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import iceman11a.fuelcraft.fuelcraft;
 
 public class BlockModLightLog extends BlockModLogBase
 {
     public static final String[] field_150169_M = new String[] {"lightOak"};
+    @SuppressWarnings("unused")
+	private static final String __OBFID = "CL_00000277";
     
     public BlockModLightLog(String name, String blockTextureName){
     	this.setBlockName(name);
     	this.setBlockTextureName(blockTextureName);
-    	this.setCreativeTab(Fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
+    	//this.setBlockTextureName("fc:" + blockTextureName);
+    	this.setCreativeTab(fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
     }
 
     /**
@@ -42,8 +43,7 @@ public class BlockModLightLog extends BlockModLogBase
 
         for (int i = 0; i < this.field_150167_a.length; ++i)
         {
-            this.field_150167_a[i] = p_149651_1_.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_" + field_150169_M[i]);
-            this.field_150166_b[i] = p_149651_1_.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_" + field_150169_M[i] + "_top");
-        }
+            this.field_150167_a[i] = p_149651_1_.registerIcon("fc:" + this.getTextureName() + "_" + field_150169_M[i]);
+            this.field_150166_b[i] = p_149651_1_.registerIcon("fc:" + this.getTextureName() + "_" + field_150169_M[i] + "_top");        }
     }
 }

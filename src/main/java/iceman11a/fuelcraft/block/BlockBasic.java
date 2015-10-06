@@ -1,13 +1,11 @@
 package iceman11a.fuelcraft.block;
 
-import iceman11a.fuelcraft.Fuelcraft;
-import iceman11a.fuelcraft.reference.ReferenceTextures;
-
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
@@ -16,6 +14,7 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import iceman11a.fuelcraft.fuelcraft;
 
 public class BlockBasic extends Block {
 
@@ -45,17 +44,17 @@ public class BlockBasic extends Block {
 		this.blockSound = sound;
 
 		this.setBlockName(name);
-		this.setCreativeTab(Fuelcraft.tabFuelcraft);
-		this.setBlockTextureName(ReferenceTextures.getTileName(textureName));
+		this.setCreativeTab(fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);		
+		this.setBlockTextureName("fc:" + textureName);
 		this.setStepSound(blockSound);
 	}
 
 	@Override
 	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable) {
-		if(world.getBlock(x, y, z) == FuelcraftBlocks.lightForestDirt){
+		if(world.getBlock(x, y, z) == Blockfc.lightForestDirt){
 			return true;
 		}
-		if(world.getBlock(x, y, z) == FuelcraftBlocks.lightForestGrass){
+		if(world.getBlock(x, y, z) == Blockfc.lightForestGrass){
 			return true;
 		}
 		else{
@@ -67,9 +66,9 @@ public class BlockBasic extends Block {
 
 	@Override
 	public void onPlantGrow(World world, int x, int y, int z, int sourceX, int sourceY, int sourceZ) {
-		if (this == FuelcraftBlocks.lightForestDirt || this == FuelcraftBlocks.lightForestGrass)
+		if (this == Blockfc.lightForestDirt || this == Blockfc.lightForestGrass)
 		{
-			world.setBlock(x, y, z, FuelcraftBlocks.lightForestDirt, 0, 2);
+			world.setBlock(x, y, z, Blockfc.lightForestDirt, 0, 2);
 		}
 	}
 
@@ -80,7 +79,7 @@ public class BlockBasic extends Block {
 	 */
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		this.blockIcon = iconRegister.registerIcon(ReferenceTextures.getTileName(this.blockTexture));
+		this.blockIcon = iconRegister.registerIcon("fc:" + blockTexture);
 	}
 
 	@Override
@@ -108,7 +107,7 @@ public class BlockBasic extends Block {
 	 */
 	public Item getItemDropped(int metadata, Random random, int fortune)
 	{
-		return Item.getItemFromBlock(FuelcraftBlocks.lightForestDirt);
+		return Item.getItemFromBlock(Blockfc.lightForestDirt);
 	}
 
 	@Override

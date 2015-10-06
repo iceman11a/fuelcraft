@@ -2,7 +2,7 @@ package iceman11a.fuelcraft.world.biomes;
 
 import java.util.Random;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
+import iceman11a.fuelcraft.block.Blockfc;
 import iceman11a.fuelcraft.world.biomes.decorators.BiomeDecoratorMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -92,7 +92,7 @@ public class ModBiomes extends BiomeGenBase {
 
                 if (block2 != null && block2.getMaterial() != Material.air)
                 {
-                    if (block2 == FuelcraftBlocks.lightStone)
+                    if (block2 == Blockfc.lightStone)
                     {
                         if (k == -1)
                         {
@@ -100,7 +100,7 @@ public class ModBiomes extends BiomeGenBase {
                             {
                                 block = null;
                                 b0 = 0;
-                                block1 = FuelcraftBlocks.lightStone;
+                                block1 = Blockfc.lightStone;
                             }
                             else if (l1 >= 59 && l1 <= 64)
                             {
@@ -133,7 +133,7 @@ public class ModBiomes extends BiomeGenBase {
                             else if (l1 < 56 - l)
                             {
                                 block = null;
-                                block1 = FuelcraftBlocks.lightStone;
+                                block1 = Blockfc.lightStone;
                                 replacableBlock[i2] = Blocks.gravel;
                             }
                             else

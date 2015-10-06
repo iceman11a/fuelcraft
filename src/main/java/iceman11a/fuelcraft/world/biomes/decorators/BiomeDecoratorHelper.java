@@ -1,6 +1,6 @@
 package iceman11a.fuelcraft.world.biomes.decorators;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
+import iceman11a.fuelcraft.block.Blockfc;
 import iceman11a.fuelcraft.world.biomes.BiomeLightForest;
 import iceman11a.fuelcraft.world.biomes.ModBiomes;
 import net.minecraft.block.Block;
@@ -75,7 +75,7 @@ public class BiomeDecoratorHelper {
      */
     private static void initOres() {
         //glowstone used fotr testing generation
-        glowStone = new WorldGenMinable(Blocks.glowstone, 30, FuelcraftBlocks.lightStone);
+        glowStone = new WorldGenMinable(Blocks.glowstone, 30, Blockfc.lightStone);
     }
 
     /**

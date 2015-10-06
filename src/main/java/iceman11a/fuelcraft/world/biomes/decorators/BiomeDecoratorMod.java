@@ -2,7 +2,7 @@ package iceman11a.fuelcraft.world.biomes.decorators;
 
 import java.util.Random;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
+import iceman11a.fuelcraft.block.Blockfc;
 import iceman11a.fuelcraft.world.gen.WorldGenEffectTree;
 import iceman11a.fuelcraft.world.gen.WorldGenForestBigTree;
 import iceman11a.fuelcraft.world.gen.WorldGenForestTrees;
@@ -36,12 +36,12 @@ public class BiomeDecoratorMod extends BiomeDecorator
 	private static final String __OBFID = "CL_00000164";
 
 	public BiomeDecoratorMod() {
-		coalGen = new WorldGenMinable(Blocks.coal_ore, 16, FuelcraftBlocks.lightStone);
-		ironGen = new WorldGenMinable(Blocks.iron_ore, 8, FuelcraftBlocks.lightStone);
-		goldGen = new WorldGenMinable(Blocks.gold_ore, 8, FuelcraftBlocks.lightStone);
-		redstoneGen = new WorldGenMinable(Blocks.redstone_ore, 7, FuelcraftBlocks.lightStone);
-		diamondGen = new WorldGenMinable(Blocks.diamond_ore, 7, FuelcraftBlocks.lightStone);
-		lapisGen = new WorldGenMinable(Blocks.lapis_ore, 6, FuelcraftBlocks.lightStone);
+		coalGen = new WorldGenMinable(Blocks.coal_ore, 16, Blockfc.lightStone);
+		ironGen = new WorldGenMinable(Blocks.iron_ore, 8, Blockfc.lightStone);
+		goldGen = new WorldGenMinable(Blocks.gold_ore, 8, Blockfc.lightStone);
+		redstoneGen = new WorldGenMinable(Blocks.redstone_ore, 7, Blockfc.lightStone);
+		diamondGen = new WorldGenMinable(Blocks.diamond_ore, 7, Blockfc.lightStone);
+		lapisGen = new WorldGenMinable(Blocks.lapis_ore, 6, Blockfc.lightStone);
 
 		// TREES
 		smallTree = new WorldGenForestTrees(true);

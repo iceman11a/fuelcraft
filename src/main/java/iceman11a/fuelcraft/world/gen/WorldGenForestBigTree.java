@@ -2,15 +2,15 @@ package iceman11a.fuelcraft.world.gen;
 
 import java.util.Random;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
+import iceman11a.fuelcraft.block.Blockfc;
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class WorldGenForestBigTree extends WorldGenForestAbstractTree
 {
-	private static Block log = FuelcraftBlocks.lightLog;
-	private static Block leaves = FuelcraftBlocks.lightLeaves;
+	private static Block log = Blockfc.lightLog;
+	private static Block leaves = Blockfc.lightLeaves;
 
 	/**
 	 * Contains three sets of two values that provide complimentary indices for
@@ -450,7 +450,7 @@ public class WorldGenForestBigTree extends WorldGenForestAbstractTree
 		Block block = this.worldObj.getBlock(this.basePos[0], this.basePos[1] - 1, this.basePos[2]);
 		boolean isSoil = false;
 
-		if (block == FuelcraftBlocks.lightForestGrass || block == FuelcraftBlocks.lightForestGrass) {
+		if (block == Blockfc.lightForestGrass || block == Blockfc.lightForestGrass) {
 			isSoil = true;
 		}
 

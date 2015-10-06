@@ -1,14 +1,15 @@
 package iceman11a.fuelcraft.worldgen;
 
-import iceman11a.fuelcraft.block.FuelcraftBlocks;
-
-import java.util.Random;
-
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraft.world.gen.feature.WorldGenerator;
+
+import java.util.Random;
 import cpw.mods.fml.common.IWorldGenerator;
+import iceman11a.fuelcraft.block.fcblock.fcBlocks;
 
 
 public class OreGeneration implements  IWorldGenerator {
@@ -30,21 +31,21 @@ public class OreGeneration implements  IWorldGenerator {
 	}
 
 	public void generateEnd(World world, Random rand, int x, int z) {
-		this.generateOre(FuelcraftBlocks.blockCorbamiteOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
+		this.generateOre(fcBlocks.blockCorbamiteOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
 	}
 	
 	public void generateOverworld(World world, Random rand, int x, int z) {
-		this.generateOre(FuelcraftBlocks.blockCorbamiteOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
+		this.generateOre(fcBlocks.blockCorbamiteOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
 		
 	}
 	
 	public void generateNether(World world, Random rand, int x, int z) {
-		this.generateOre(FuelcraftBlocks.blockCorbamiteOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
+		this.generateOre(fcBlocks.blockCorbamiteOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
 	}
 	
 	public void generateLight(World world, Random rand, int x, int z) {
-		this.generateOre(FuelcraftBlocks.blockCorbamiteOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
-		this.generateOre(FuelcraftBlocks.blockCorCoalOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
+		this.generateOre(fcBlocks.blockCorbamiteOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
+		this.generateOre(fcBlocks.blockCorCoalOre, world, rand, x, z, 16, 16, 6+rand.nextInt(16), 25, 38, 100);
 	}
 	
 	public void generateOre(Block block, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVienSize, int chanceToSpawn, int minY, int maxY) {
