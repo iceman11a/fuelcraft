@@ -10,11 +10,13 @@ import net.minecraft.item.ItemBucket;
 
 public class ItemTapoilBucket extends ItemBucket
 {
-    public ItemTapoilBucket() {
+    public ItemTapoilBucket()
+    {
         this(FuelcraftFluids.blockFluidTapoil);
     }
 
-    public ItemTapoilBucket(Block fluidBlock) {
+    public ItemTapoilBucket(Block fluidBlock)
+    {
         super(fluidBlock);
         setMaxStackSize(1);
         setContainerItem(Items.bucket);

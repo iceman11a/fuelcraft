@@ -146,38 +146,38 @@ public class BlockModFire extends BlockFire
      */
     @SuppressWarnings("unused")
     @Deprecated
-    private void tryCatchFire(World p_149841_1_, int p_149841_2_, int p_149841_3_, int p_149841_4_, int p_149841_5_, Random p_149841_6_, int p_149841_7_)
+    private void tryCatchFire(World world, int x, int y, int z, int p_149841_5_, Random rand, int p_149841_7_)
     {
-        this.tryCatchFire(p_149841_1_, p_149841_2_, p_149841_3_, p_149841_4_, p_149841_5_, p_149841_6_, p_149841_7_, UP);
+        this.tryCatchFire(world, x, y, z, p_149841_5_, rand, p_149841_7_, UP);
     }
 
-    private void tryCatchFire(World p_149841_1_, int p_149841_2_, int p_149841_3_, int p_149841_4_, int p_149841_5_, Random p_149841_6_, int p_149841_7_, ForgeDirection face)
+    private void tryCatchFire(World world, int x, int y, int z, int p_149841_5_, Random rand, int p_149841_7_, ForgeDirection face)
     {
-        int j1 = p_149841_1_.getBlock(p_149841_2_, p_149841_3_, p_149841_4_).getFlammability(p_149841_1_, p_149841_2_, p_149841_3_, p_149841_4_, face);
+        int j1 = world.getBlock(x, y, z).getFlammability(world, x, y, z, face);
 
-        if (p_149841_6_.nextInt(p_149841_5_) < j1)
+        if (rand.nextInt(p_149841_5_) < j1)
         {
-            boolean flag = p_149841_1_.getBlock(p_149841_2_, p_149841_3_, p_149841_4_) == Blocks.tnt;
+            boolean flag = world.getBlock(x, y, z) == Blocks.tnt;
 
-            if (p_149841_6_.nextInt(p_149841_7_ + 10) < 5 && !p_149841_1_.canLightningStrikeAt(p_149841_2_, p_149841_3_, p_149841_4_))
+            if (rand.nextInt(p_149841_7_ + 10) < 5 && ! world.canLightningStrikeAt(x, y, z))
             {
-                int k1 = p_149841_7_ + p_149841_6_.nextInt(5) / 4;
+                int k1 = p_149841_7_ + rand.nextInt(5) / 4;
 
                 if (k1 > 15)
                 {
                     k1 = 15;
                 }
 
-                p_149841_1_.setBlock(p_149841_2_, p_149841_3_, p_149841_4_, this, k1, 3);
+                world.setBlock(x, y, z, this, k1, 3);
             }
             else
             {
-                p_149841_1_.setBlockToAir(p_149841_2_, p_149841_3_, p_149841_4_);
+                world.setBlockToAir(x, y, z);
             }
 
             if (flag)
             {
-                Blocks.tnt.onBlockDestroyedByPlayer(p_149841_1_, p_149841_2_, p_149841_3_, p_149841_4_, 1);
+                Blocks.tnt.onBlockDestroyedByPlayer(world, x, y, z, 1);
             }
         }
     }
@@ -185,36 +185,36 @@ public class BlockModFire extends BlockFire
     /**
      * Returns true if at least one block next to this one can burn.
      */
-    private boolean canNeighborBurn(World p_149847_1_, int p_149847_2_, int p_149847_3_, int p_149847_4_)
+    private boolean canNeighborBurn(World world, int x, int y, int z)
     {
-        return this.canCatchFire(p_149847_1_, p_149847_2_ + 1, p_149847_3_, p_149847_4_, WEST ) ||
-                this.canCatchFire(p_149847_1_, p_149847_2_ - 1, p_149847_3_, p_149847_4_, EAST ) ||
-                this.canCatchFire(p_149847_1_, p_149847_2_, p_149847_3_ - 1, p_149847_4_, UP   ) ||
-                this.canCatchFire(p_149847_1_, p_149847_2_, p_149847_3_ + 1, p_149847_4_, DOWN ) ||
-                this.canCatchFire(p_149847_1_, p_149847_2_, p_149847_3_, p_149847_4_ - 1, SOUTH) ||
-                this.canCatchFire(p_149847_1_, p_149847_2_, p_149847_3_, p_149847_4_ + 1, NORTH);
+        return this.canCatchFire(world, x + 1, y, z, WEST ) ||
+                this.canCatchFire(world, x - 1, y, z, EAST ) ||
+                this.canCatchFire(world, x, y - 1, z, UP   ) ||
+                this.canCatchFire(world, x, y + 1, z, DOWN ) ||
+                this.canCatchFire(world, x, y, z - 1, SOUTH) ||
+                this.canCatchFire(world, x, y, z + 1, NORTH);
     }
 
     /**
      * Gets the highest chance of a neighbor block encouraging this block to catch fire
      */
-    private int getChanceOfNeighborsEncouragingFire(World p_149845_1_, int p_149845_2_, int p_149845_3_, int p_149845_4_)
+    private int getChanceOfNeighborsEncouragingFire(World world, int x, int y, int z)
     {
         byte b0 = 0;
 
-        if (!p_149845_1_.isAirBlock(p_149845_2_, p_149845_3_, p_149845_4_))
+        if (! world.isAirBlock(x, y, z))
         {
             return 0;
         }
         else
         {
             int l = b0;
-            l = this.getChanceToEncourageFire(p_149845_1_, p_149845_2_ + 1, p_149845_3_, p_149845_4_, l, WEST );
-            l = this.getChanceToEncourageFire(p_149845_1_, p_149845_2_ - 1, p_149845_3_, p_149845_4_, l, EAST );
-            l = this.getChanceToEncourageFire(p_149845_1_, p_149845_2_, p_149845_3_ - 1, p_149845_4_, l, UP   );
-            l = this.getChanceToEncourageFire(p_149845_1_, p_149845_2_, p_149845_3_ + 1, p_149845_4_, l, DOWN );
-            l = this.getChanceToEncourageFire(p_149845_1_, p_149845_2_, p_149845_3_, p_149845_4_ - 1, l, SOUTH);
-            l = this.getChanceToEncourageFire(p_149845_1_, p_149845_2_, p_149845_3_, p_149845_4_ + 1, l, NORTH);
+            l = this.getChanceToEncourageFire(world, x + 1, y, z, l, WEST );
+            l = this.getChanceToEncourageFire(world, x - 1, y, z, l, EAST );
+            l = this.getChanceToEncourageFire(world, x, y - 1, z, l, UP   );
+            l = this.getChanceToEncourageFire(world, x, y + 1, z, l, DOWN );
+            l = this.getChanceToEncourageFire(world, x, y, z - 1, l, SOUTH);
+            l = this.getChanceToEncourageFire(world, x, y, z + 1, l, NORTH);
             return l;
         }
     }
@@ -223,31 +223,33 @@ public class BlockModFire extends BlockFire
      * Checks the specified block coordinate to see if it can catch fire.  Args: blockAccess, x, y, z
      */
     @Deprecated
-    public boolean canBlockCatchFire(IBlockAccess p_149844_1_, int p_149844_2_, int p_149844_3_, int p_149844_4_)
+    public boolean canBlockCatchFire(IBlockAccess world, int x, int y, int z)
     {
-        return canCatchFire(p_149844_1_, p_149844_2_, p_149844_3_, p_149844_4_, UP);
+        return canCatchFire(world, x, y, z, UP);
     }
 
     @Deprecated
-    public int func_149846_a(World p_149846_1_, int p_149846_2_, int p_149846_3_, int p_149846_4_, int p_149846_5_)
+    public int func_149846_a(World world, int x, int y, int z, int p_149846_5_)
     {
-        return getChanceToEncourageFire(p_149846_1_, p_149846_2_, p_149846_3_, p_149846_4_, p_149846_5_, UP);
+        return getChanceToEncourageFire(world, x, y, z, p_149846_5_, UP);
     }
 
     /**
      * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
      */
-    public boolean canPlaceBlockAt(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
+    public boolean canPlaceBlockAt(World world, int x, int y, int z)
     {
-        return World.doesBlockHaveSolidTopSurface(p_149742_1_, p_149742_2_, p_149742_3_ - 1, p_149742_4_) || this.canNeighborBurn(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_);
+        return World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) || this.canNeighborBurn(world, x, y, z);
     }
 
     /**
      * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
      * their own) Args: x, y, z, neighbor Block
      */
-    public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-        if (!World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && !this.canNeighborBurn(world, x, y, z)) {
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+    {
+        if (! World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && ! this.canNeighborBurn(world, x, y, z))
+        {
             world.setBlockToAir(x, y, z);
         }
     }
@@ -255,14 +257,16 @@ public class BlockModFire extends BlockFire
     /**
      * Called whenever the block is added into the world. Args: world, x, y, z
      */
-    public void onBlockAdded(World world, int x, int y, int z){
-        if (world.provider.dimensionId > 0 || !FuelcraftBlocks.lightPortal.getPortalSize(world, x, y, z)){
-            if (!World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && !this.canNeighborBurn(world, x, y, z)){
+    public void onBlockAdded(World world, int x, int y, int z)
+    {
+        if (world.provider.dimensionId > 0 || ! FuelcraftBlocks.lightPortal.getPortalSize(world, x, y, z))
+        {
+            if (! World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && ! this.canNeighborBurn(world, x, y, z))
+            {
                 world.setBlockToAir(x, y, z);
-            } else {
-                /*if(world.provider.dimensionId != 0){
-                    world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world) + world.rand.nextInt(10));
-                }*/
+            }
+            else
+            {
                 world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world) + world.rand.nextInt(10));
             }
         }
@@ -354,25 +358,25 @@ public class BlockModFire extends BlockFire
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister p_149651_1_)
+    public void registerBlockIcons(IIconRegister iconRegister)
     {
         this.icons = new IIcon[] {
-            p_149651_1_.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_layer_0"),
-            p_149651_1_.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_layer_1")
+            iconRegister.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_layer_0"),
+            iconRegister.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_layer_1")
         };
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon getFireIcon(int p_149840_1_)
+    public IIcon getFireIcon(int index)
     {
-        return this.icons[p_149840_1_];
+        return this.icons[index];
     }
 
     /**
      * Gets the block's texture. Args: side, meta
      */
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+    public IIcon getIcon(int side, int meta)
     {
         return this.icons[0];
     }

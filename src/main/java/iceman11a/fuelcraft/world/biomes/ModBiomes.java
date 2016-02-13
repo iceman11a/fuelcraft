@@ -21,20 +21,22 @@ import net.minecraftforge.common.BiomeDictionary.Type;
  * 
  * @author Jimmy04Creeper
  */
-public class ModBiomes extends BiomeGenBase {
-
+public class ModBiomes extends BiomeGenBase
+{
     /** The biome height */
     public static final BiomeGenBase.Height biomeHeight = new BiomeGenBase.Height(0.3F, 0.6F);
 
     public static BiomeGenBase forestLight;
     public static BiomeGenBase forestDark;
 
-    public ModBiomes(int biomeId) {
+    public ModBiomes(int biomeId)
+    {
         super(biomeId);
         this.theBiomeDecorator = new BiomeDecoratorMod();
     }
 
-    static {
+    static
+    {
         forestLight = (new BiomeLightForest(Configs.biomeIdLight).setColor(5470985).setTemperatureRainfall(0.95F, 0.9F).setHeight(biomeHeight).setBiomeName("Forest Of Light"));
         forestDark = (new BiomeDarkForest(Configs.biomeIdDark).setColor(34049320).setTemperatureRainfall(0.8F, 0.4F).setHeight(biomeHeight).setBiomeName("Darkness Forest"));
     }
@@ -55,7 +57,8 @@ public class ModBiomes extends BiomeGenBase {
     }
     
     @Override
-    public void genTerrainBlocks(World p_150573_1_, Random p_150573_2_, Block[] p_150573_3_, byte[] p_150573_4_, int p_150573_5_, int p_150573_6_, double p_150573_7_) {
+    public void genTerrainBlocks(World p_150573_1_, Random p_150573_2_, Block[] p_150573_3_, byte[] p_150573_4_, int p_150573_5_, int p_150573_6_, double p_150573_7_)
+    {
         genBiomeModdedTerrain(p_150573_1_, p_150573_2_, p_150573_3_, p_150573_4_, p_150573_5_, p_150573_6_, p_150573_7_);
     }
 

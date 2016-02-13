@@ -19,6 +19,8 @@ tile.fuelcraft.ore.1.name=Cor Coal Ore
 tile.fuelcraft.ore.2.name=Red Cor Ore
 tile.fuelcraft.ore.3.name=Black Diamond Ore
 
+tile.fuelcraft.crossinggate.0.name=Crossing Gate
+
 tile.fuelcraft.machine.0.name=Diesel Producer
 tile.fuelcraft.machine.1.name=Cart Painter
 tile.fuelcraft.machine.2.name=Token Controller
@@ -51,8 +53,14 @@ fuelcraft.container.tokencontroller=Token Controller
 #          GUI labels           #
 #################################
 fuelcraft.gui.label.blazepowder=Blaze Powder
+fuelcraft.gui.label.cartdetection=Cart detection
 fuelcraft.gui.label.cartfilter.carttypefilter=Cart type filter
 fuelcraft.gui.label.cartfilter.filteritem=Filter item
+fuelcraft.gui.label.clickscrolltip.0=- Left or right click or scroll
+fuelcraft.gui.label.clickscrolltip.1=  with the mouse wheel over
+fuelcraft.gui.label.clickscrolltip.2=  the buttons to change the values.
+fuelcraft.gui.label.detectiononblockupdate.0=- Cart detection happens on block update
+fuelcraft.gui.label.detectiononblockupdate.1=  (redstone signal change works for this)
 fuelcraft.gui.label.coalorcharcoal=Coal or Charcoal
 fuelcraft.gui.label.dieselbucket.in.empty=Empty (Diesel) Bucket in
 fuelcraft.gui.label.dieselbucket.out.filled=Diesel Bucket out
@@ -62,11 +70,17 @@ fuelcraft.gui.label.empty=Empty
 fuelcraft.gui.label.filter.locomotive=Locomotive type filter
 fuelcraft.gui.label.fuel=Fuel
 fuelcraft.gui.label.fuel.insertinfo=(can only be inserted from the bottom)
+fuelcraft.gui.label.hidearea=Hide area
+fuelcraft.gui.label.mode=Mode
 fuelcraft.gui.label.oilbucket.in.empty=Empty (Oil) Bucket in
 fuelcraft.gui.label.oilbucket.in.filled=Oil Bucket in
 fuelcraft.gui.label.oilbucket.out.empty=Empty (Oil) Bucket out
 fuelcraft.gui.label.oilbucket.out.filled=Oil Bucket out
+fuelcraft.gui.label.redstone=Redstone
+fuelcraft.gui.label.reset=Reset
 fuelcraft.gui.label.saplings=Saplings
+fuelcraft.gui.label.save=Save
+fuelcraft.gui.label.showarea=Show area
 fuelcraft.gui.label.tapoilbucket.in.empty=Empty (Tapoil) Bucket in
 fuelcraft.gui.label.tapoilbucket.in.filled=Tapoil Bucket in
 fuelcraft.gui.label.tapoilbucket.out.empty=Empty (Tapoil) Bucket out

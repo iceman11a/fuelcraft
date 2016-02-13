@@ -29,7 +29,7 @@ public class LightDimensionTeleporter extends Teleporter
      * location.
      */
     @SuppressWarnings("rawtypes")
-	private final List destinationCoordinateKeys = new ArrayList();
+    private final List destinationCoordinateKeys = new ArrayList();
 
     public LightDimensionTeleporter(WorldServer p_i1963_1_)
     {
@@ -500,7 +500,7 @@ public class LightDimensionTeleporter extends Teleporter
         if (p_85189_1_ % 100L == 0L)
         {
             @SuppressWarnings("rawtypes")
-			Iterator iterator = this.destinationCoordinateKeys.iterator();
+            Iterator iterator = this.destinationCoordinateKeys.iterator();
             long j = p_85189_1_ - 600L;
 
             while (iterator.hasNext())

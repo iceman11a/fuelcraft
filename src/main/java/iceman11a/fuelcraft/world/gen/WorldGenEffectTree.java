@@ -11,17 +11,16 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class WorldGenEffectTree extends WorldGenForestAbstractTree
 {
-	private Block log = FuelcraftBlocks.lightLog;
-	private Block leaves = FuelcraftBlocks.effectLeaves;
-	
-    @SuppressWarnings("unused")
-	private static final String __OBFID = "CL_00000432";
+    private Block log = FuelcraftBlocks.lightLog;
+    private Block leaves = FuelcraftBlocks.effectLeaves;
 
-    public WorldGenEffectTree(boolean p_i45463_1_) {
+    public WorldGenEffectTree(boolean p_i45463_1_)
+    {
         super(p_i45463_1_);
     }
 
-    public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_) {
+    public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_)
+    {
         int l = p_76484_2_.nextInt(3) + p_76484_2_.nextInt(3) + 5;
         boolean flag = true;
 
@@ -51,7 +50,7 @@ public class WorldGenEffectTree extends WorldGenForestAbstractTree
                         if (i1 >= 0 && i1 < 256)
                         {
                             @SuppressWarnings("unused")
-							Block block = p_76484_1_.getBlock(j1, i1, k1);
+                            Block block = p_76484_1_.getBlock(j1, i1, k1);
 
                             if (!this.isReplaceable(p_76484_1_, j1, i1, k1))
                             {

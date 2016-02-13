@@ -8,20 +8,23 @@ import net.minecraft.entity.player.InventoryPlayer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class TileEntityTokenController extends TileEntityFuelCraftInventory {
+public class TileEntityTokenController extends TileEntityFuelCraftInventory
+{
+    public TileEntityTokenController()
+    {
+        super(ReferenceNames.NAME_TILE_TOKEN_CONTROLLER);
+    }
 
-	public TileEntityTokenController() {
-		super(ReferenceNames.NAME_TILE_TOKEN_CONTROLLER);
-	}
+    @Override
+    public ContainerTokenController getContainer(InventoryPlayer inventoryPlayer)
+    {
+        return new ContainerTokenController(inventoryPlayer, this);
+    }
 
-	@Override
-	public ContainerTokenController getContainer(InventoryPlayer inventoryPlayer) {
-		return new ContainerTokenController(inventoryPlayer, this);
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public GuiFuelCraftInventory getGui(InventoryPlayer inventoryPlayer) {
-		return new GuiTokenController(this.getContainer(inventoryPlayer), this);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public GuiFuelCraftInventory getGui(InventoryPlayer inventoryPlayer)
+    {
+        return new GuiTokenController(this.getContainer(inventoryPlayer), this);
+    }
 }

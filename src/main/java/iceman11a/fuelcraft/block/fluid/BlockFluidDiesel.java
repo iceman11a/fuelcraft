@@ -5,8 +5,8 @@ import net.minecraftforge.fluids.Fluid;
 
 public class BlockFluidDiesel extends BlockFluidBaseFuelcraft
 {
-	public BlockFluidDiesel(Fluid fluid)
-	{
-		super(ReferenceNames.NAME_FLUID_DIESEL, fluid);
-	}
+    public BlockFluidDiesel(Fluid fluid)
+    {
+        super(ReferenceNames.NAME_FLUID_DIESEL, fluid);
+    }
 }

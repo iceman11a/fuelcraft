@@ -11,4 +11,5 @@ eclipse/
 !mod_specs.txt
 !mod_specs_todo_list.txt
 libs/
+libs_src/
 *.zip

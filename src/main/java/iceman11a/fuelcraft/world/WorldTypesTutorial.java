@@ -10,36 +10,35 @@ import net.minecraft.world.gen.ChunkProviderGenerate;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldTypesTutorial extends WorldType{
-	
-	private boolean hasNotificationData;
-	
-	public static WorldType tutDimOverWorld;
+public class WorldTypesTutorial extends WorldType
+{
+    private boolean hasNotificationData;
+    public static WorldType tutDimOverWorld;
 
-	public WorldTypesTutorial(String name) {
-		super(name);
-	}
-	
-	public static void addCustomWorldTypes(){
-		tutDimOverWorld = new WorldTypesTutorial("TUTORIAL").setNotificationData();
-	}
+    public WorldTypesTutorial(String name) {
+        super(name);
+    }
+    
+    public static void addCustomWorldTypes(){
+        tutDimOverWorld = new WorldTypesTutorial("TUTORIAL").setNotificationData();
+    }
 
-	@Override
-	public WorldChunkManager getChunkManager(World world) {
-		return new WorldChunkManagerHell(BiomeGenBase.megaTaiga, 0.5F);
-	}
+    @Override
+    public WorldChunkManager getChunkManager(World world) {
+        return new WorldChunkManagerHell(BiomeGenBase.megaTaiga, 0.5F);
+    }
 
-	@Override
-	public IChunkProvider getChunkGenerator(World world, String generatorOptions) {
-		return new ChunkProviderGenerate(world, world.getSeed(), world.getWorldInfo().isMapFeaturesEnabled());
-	}
+    @Override
+    public IChunkProvider getChunkGenerator(World world, String generatorOptions) {
+        return new ChunkProviderGenerate(world, world.getSeed(), world.getWorldInfo().isMapFeaturesEnabled());
+    }
 
-	@Override
-	public int getMinimumSpawnHeight(World world) {
-		return 64;
-	} 
-	
-	/**
+    @Override
+    public int getMinimumSpawnHeight(World world) {
+        return 64;
+    } 
+    
+    /**
      * enables the display of generator.[worldtype].info message on the customize world menu
      */
     private WorldType setNotificationData()

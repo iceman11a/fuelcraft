@@ -8,12 +8,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 
-public class BlockTokenTrack extends BlockFuelcraftBase {	
-	
-	public BlockTokenTrack(String name, float hardness, Material material) {		
+public class BlockTokenTrack extends BlockFuelcraftBase
+{
+	public BlockTokenTrack(String name, float hardness, Material material)
+	{
 		super(name, hardness, material);
 		this.setLightLevel(0.2F);
-		// TODO Auto-generated constructor stub
 	}
 
 	@SideOnly(Side.CLIENT)

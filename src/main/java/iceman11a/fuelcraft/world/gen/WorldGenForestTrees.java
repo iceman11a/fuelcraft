@@ -20,9 +20,6 @@ public class WorldGenForestTrees extends WorldGenForestAbstractTree
     private static Block wood;
     /** The leaves to use in tree generation. */
     private static Block leaves;
-    
-    @SuppressWarnings("unused")
-	private static final String __OBFID = "CL_00000438";
 
     public WorldGenForestTrees(boolean p_i2027_1_)
     {
@@ -38,7 +35,7 @@ public class WorldGenForestTrees extends WorldGenForestAbstractTree
         this.vinesGrow = growVines;
     }
 
-	public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_)
+    public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_)
     {
         int l = p_76484_2_.nextInt(3) + this.minTreeHeight;
         boolean flag = true;

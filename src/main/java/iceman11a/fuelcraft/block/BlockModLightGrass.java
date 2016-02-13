@@ -38,78 +38,78 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
      * Gets the block's texture. Args: side, meta
      */
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+    public IIcon getIcon(int side, int meta)
     {
-        return p_149691_1_ == 1 ? this.field_149991_b : (p_149691_1_ == 0 ? FuelcraftBlocks.lightForestDirt.getBlockTextureFromSide(p_149691_1_) : this.blockIcon);
+        return side == 1 ? this.field_149991_b : (side == 0 ? FuelcraftBlocks.lightForestDirt.getBlockTextureFromSide(side) : this.blockIcon);
     }
 
     /**
      * Ticks the block if it's been scheduled
      */
-    public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+    public void updateTick(World world, int x, int y, int z, Random rand)
     {
-        if (!p_149674_1_.isRemote)
+        if (! world.isRemote)
         {
-            if (p_149674_1_.getBlockLightValue(p_149674_2_, p_149674_3_ + 1, p_149674_4_) < 4 && p_149674_1_.getBlockLightOpacity(p_149674_2_, p_149674_3_ + 1, p_149674_4_) > 2)
+            if (world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2)
             {
-                p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, FuelcraftBlocks.lightForestDirt);
+                world.setBlock(x, y, z, FuelcraftBlocks.lightForestDirt);
             }
-            else if (p_149674_1_.getBlockLightValue(p_149674_2_, p_149674_3_ + 1, p_149674_4_) >= 9)
+            else if (world.getBlockLightValue(x, y + 1, z) >= 9)
             {
                 for (int l = 0; l < 4; ++l)
                 {
-                    int i1 = p_149674_2_ + p_149674_5_.nextInt(3) - 1;
-                    int j1 = p_149674_3_ + p_149674_5_.nextInt(5) - 3;
-                    int k1 = p_149674_4_ + p_149674_5_.nextInt(3) - 1;
-                    //Block block = p_149674_1_.getBlock(i1, j1 + 1, k1);
+                    int i1 = x + rand.nextInt(3) - 1;
+                    int j1 = y + rand.nextInt(5) - 3;
+                    int k1 = z + rand.nextInt(3) - 1;
+                    //Block block = world.getBlock(i1, j1 + 1, k1);
 
-                    if (p_149674_1_.getBlock(i1, j1, k1) == FuelcraftBlocks.lightForestDirt && p_149674_1_.getBlockMetadata(i1, j1, k1) == 0 && p_149674_1_.getBlockLightValue(i1, j1 + 1, k1) >= 4 && p_149674_1_.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
+                    if (world.getBlock(i1, j1, k1) == FuelcraftBlocks.lightForestDirt && world.getBlockMetadata(i1, j1, k1) == 0 && world.getBlockLightValue(i1, j1 + 1, k1) >= 4 && world.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
                     {
-                        p_149674_1_.setBlock(i1, j1, k1, FuelcraftBlocks.lightForestDirt);
+                        world.setBlock(i1, j1, k1, FuelcraftBlocks.lightForestDirt);
                     }
                 }
             }
         }
     }
 
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+    public Item getItemDropped(int p_149650_1_, Random rand, int p_149650_3_)
     {
-        return FuelcraftBlocks.lightForestDirt.getItemDropped(0, p_149650_2_, p_149650_3_);
+        return FuelcraftBlocks.lightForestDirt.getItemDropped(0, rand, p_149650_3_);
     }
 
-    public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
+    public boolean func_149851_a(World world, int x, int y, int z, boolean p_149851_5_)
     {
         return true;
     }
 
-    public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_)
+    public boolean func_149852_a(World world, Random rand, int x, int y, int z)
     {
         return true;
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(IBlockAccess p_149673_1_, int p_149673_2_, int p_149673_3_, int p_149673_4_, int p_149673_5_)
+    public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side)
     {
-        if (p_149673_5_ == 1)
+        if (side == 1)
         {
             return this.field_149991_b;
         }
-        else if (p_149673_5_ == 0)
+        else if (side == 0)
         {
-            return FuelcraftBlocks.lightForestDirt.getBlockTextureFromSide(p_149673_5_);
+            return FuelcraftBlocks.lightForestDirt.getBlockTextureFromSide(side);
         }
         else
         {
-            Material material = p_149673_1_.getBlock(p_149673_2_, p_149673_3_ + 1, p_149673_4_).getMaterial();
+            Material material = world.getBlock(x, y + 1, z).getMaterial();
             return material != Material.snow && material != Material.craftedSnow ? this.blockIcon : this.field_149993_M;
         }
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister p_149651_1_)
+    public void registerBlockIcons(IIconRegister iconRegister)
     {
-        this.blockIcon = p_149651_1_.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_side");
-        this.field_149991_b = p_149651_1_.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_top");
+        this.blockIcon = iconRegister.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_side");
+        this.field_149991_b = iconRegister.registerIcon(ReferenceTextures.getTileName(this.getTextureName()) + "_top");
     }
 
     @SideOnly(Side.CLIENT)
@@ -118,44 +118,44 @@ public class BlockModLightGrass extends BlockBasic implements IGrowable
         return  null;//field_149994_N;
     }
 
-    public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_, int p_149853_5_)
+    public void func_149853_b(World world, Random rand, int x, int y, int z)
     {
         int l = 0;
 
         while (l < 128)
         {
-            int i1 = p_149853_3_;
-            int j1 = p_149853_4_ + 1;
-            int k1 = p_149853_5_;
+            int i1 = x;
+            int j1 = y + 1;
+            int k1 = z;
             int l1 = 0;
 
             while (true)
             {
                 if (l1 < l / 16)
                 {
-                    i1 += p_149853_2_.nextInt(3) - 1;
-                    j1 += (p_149853_2_.nextInt(3) - 1) * p_149853_2_.nextInt(3) / 2;
-                    k1 += p_149853_2_.nextInt(3) - 1;
+                    i1 += rand.nextInt(3) - 1;
+                    j1 += (rand.nextInt(3) - 1) * rand.nextInt(3) / 2;
+                    k1 += rand.nextInt(3) - 1;
 
-                    if (p_149853_1_.getBlock(i1, j1 - 1, k1) == FuelcraftBlocks.lightForestDirt && !p_149853_1_.getBlock(i1, j1, k1).isNormalCube())
+                    if (world.getBlock(i1, j1 - 1, k1) == FuelcraftBlocks.lightForestDirt && !world.getBlock(i1, j1, k1).isNormalCube())
                     {
                         ++l1;
                         continue;
                     }
                 }
-                else if (p_149853_1_.getBlock(i1, j1, k1).getMaterial() == Material.air)
+                else if (world.getBlock(i1, j1, k1).getMaterial() == Material.air)
                 {
-                    if (p_149853_2_.nextInt(8) != 0)
+                    if (rand.nextInt(8) != 0)
                     {
-                        if (Blocks.tallgrass.canBlockStay(p_149853_1_, i1, j1, k1))
+                        if (Blocks.tallgrass.canBlockStay(world, i1, j1, k1))
                         {
                         	//TODO: change tall grass for mine ??
-                            //p_149853_1_.setBlock(i1, j1, k1, Blocks.tallgrass, 1, 3);
+                            //world.setBlock(i1, j1, k1, Blocks.tallgrass, 1, 3);
                         }
                     }
                     else
                     {
-                        p_149853_1_.getBiomeGenForCoords(i1, k1).plantFlower(p_149853_1_, p_149853_2_, i1, j1, k1);
+                        world.getBiomeGenForCoords(i1, k1).plantFlower(world, rand, i1, j1, k1);
                     }
                 }
 

@@ -27,148 +27,145 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockModLightSapling extends BlockSapling implements IGrowable
 {
-	private static String[] saplings;
-	private IIcon[] textures;
-	private static final int TYPES = 1;
+    private static String[] saplings;
+    private IIcon[] textures;
+    private static final int TYPES = 1;
 
-	private static WorldGenerator tree;
-	private static WorldGenerator treeBig;
-	private static WorldGenerator effectTree;
+    private static WorldGenerator tree;
+    private static WorldGenerator treeBig;
+    private static WorldGenerator effectTree;
 
-	public BlockModLightSapling(String blockname, String textureName)
-	{
-		// Set tree size.
-		treeBig = new WorldGenForestBigTree(true, 10, 1, 5);
-		tree = new WorldGenForestTrees(true);
-		effectTree = new WorldGenEffectTree(true);
-		this.setHardness(0.0F);
-		this.setStepSound(Block.soundTypeGrass);
-		this.setCreativeTab(Fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
-		this.setBlockName(blockname);
-		this.setBlockTextureName(textureName);
-		saplings = new String[] { textureName + "_Sapling" };
-	}
+    public BlockModLightSapling(String blockname, String textureName)
+    {
+        // Set tree size.
+        treeBig = new WorldGenForestBigTree(true, 10, 1, 5);
+        tree = new WorldGenForestTrees(true);
+        effectTree = new WorldGenEffectTree(true);
+        this.setHardness(0.0F);
+        this.setStepSound(Block.soundTypeGrass);
+        this.setCreativeTab(Fuelcraft.tabFuelcraft); // CreativeTabs.tabBlock);
+        this.setBlockName(blockname);
+        this.setBlockTextureName(textureName);
+        saplings = new String[] { textureName + "_Sapling" };
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-		textures = new IIcon[saplings.length];
-		for (int i = 0; i < saplings.length; ++i)
-		{
-			textures[i] = iconRegister.registerIcon(ReferenceTextures.getTileName(saplings[i]));
-		}
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconRegister)
+    {
+        textures = new IIcon[saplings.length];
+        for (int i = 0; i < saplings.length; ++i)
+        {
+            textures[i] = iconRegister.registerIcon(ReferenceTextures.getTileName(saplings[i]));
+        }
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta)
-	{
-		if (meta < 0 || meta >= saplings.length)
-		{
-			meta = 0;
-		}
-		return textures[meta];
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int meta)
+    {
+        if (meta < 0 || meta >= saplings.length)
+        {
+            meta = 0;
+        }
+        return textures[meta];
+    }
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
-	{
-		for (int i = 0; i < saplings.length; ++i)
-		{
-			list.add(new ItemStack(block, 1, i));
-		}
-	}
+    @Override
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int i = 0; i < saplings.length; ++i)
+        {
+            list.add(new ItemStack(block, 1, i));
+        }
+    }
 
-	public boolean isValidPosition(World world, int x, int y, int z, int metadata)
-	{
-		Block block = world.getBlock(x, y - 1, z);
-		switch (metadata)
-		{
-		default:
-			return block == FuelcraftBlocks.lightForestGrass || block == FuelcraftBlocks.lightForestDirt || block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this);
-		}
-	}
+    public boolean isValidPosition(World world, int x, int y, int z, int metadata)
+    {
+        Block block = world.getBlock(x, y - 1, z);
+        switch (metadata)
+        {
+            default:
+                return block == FuelcraftBlocks.lightForestGrass || block == FuelcraftBlocks.lightForestDirt || block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this);
+        }
+    }
 
-	@Override
-	public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side)
-	{
-		return isValidPosition(world, x, y, z, -1);
-	}
+    @Override
+    public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side)
+    {
+        return isValidPosition(world, x, y, z, -1);
+    }
 
-	@Override
-	public boolean canBlockStay(World world, int x, int y, int z)
-	{
-		Block soil = world.getBlock(x, y - 1, z);
+    @Override
+    public boolean canBlockStay(World world, int x, int y, int z)
+    {
+        Block soil = world.getBlock(x, y - 1, z);
 
-		if (world.getBlockMetadata(x, y, z) != 7)
-			return (world.getFullBlockLightValue(x, y, z) >= 8 || world.canBlockSeeTheSky(x, y, z)) &&
-					(soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
-		else
-			return (world.getFullBlockLightValue(x, y, z) >= 8 || world.canBlockSeeTheSky(x, y, z)) &&
-					(soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
-	}
+        if (world.getBlockMetadata(x, y, z) != 7)
+            return (world.getFullBlockLightValue(x, y, z) >= 8 || world.canBlockSeeTheSky(x, y, z)) &&
+                    (soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
+        else
+            return (world.getFullBlockLightValue(x, y, z) >= 8 || world.canBlockSeeTheSky(x, y, z)) &&
+                    (soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
+    }
 
-	@Override
-	public void updateTick(World world, int x, int y, int z, Random random)
-	{
-		if (world.isRemote)
-			return;
+    @Override
+    public void updateTick(World world, int x, int y, int z, Random random)
+    {
+        if (world.isRemote)
+            return;
 
-		if (world.getBlockLightValue(x, y + 1, z) >= 9 && random.nextInt(7) == 0)
-		{
-			this.func_149878_d(world, x, y, z, random);
-		}
-	}
+        if (world.getBlockLightValue(x, y + 1, z) >= 9 && random.nextInt(7) == 0)
+        {
+            this.func_149878_d(world, x, y, z, random);
+        }
+    }
 
-	@Override
-	public void func_149878_d(World world, int x, int y, int z, Random random)
-	{
-		int meta = world.getBlockMetadata(x, y, z) & TYPES;
-		Object obj = null;
-		int rnd = random.nextInt(10);
+    @Override
+    public void func_149878_d(World world, int x, int y, int z, Random random)
+    {
+        int meta = world.getBlockMetadata(x, y, z) & TYPES;
+        Object obj = null;
+        int rnd = random.nextInt(10);
 
-		if (obj == null) {
-			if (rnd < 5) {
-				obj = tree;
-			}
-			if (rnd >= 5) {
-				obj = treeBig;
-			}
-			if (rnd == 12) {
-				obj = effectTree;
-			}
-		}
-		if (obj != null)
-		{
-			world.setBlockToAir(x, y, z);
+        if (obj == null)
+        {
+            if (rnd < 5) {
+                obj = tree;
+            }
+            if (rnd >= 5) {
+                obj = treeBig;
+            }
+            if (rnd == 12) {
+                obj = effectTree;
+            }
+        }
 
-			if (!((WorldGenerator) obj).generate(world, random, x, y, z))
-			{
-				world.setBlock(x, y, z, this, meta, 2);
-			}
-		}
-	}
+        if (obj != null)
+        {
+            world.setBlockToAir(x, y, z);
 
-	@Override
-	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable) {
-		if (world.getBlock(x, y, z) == FuelcraftBlocks.lightForestDirt) {
-			return true;
-		}
-		if (world.getBlock(x, y, z) == FuelcraftBlocks.lightForestGrass) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+            if (!((WorldGenerator) obj).generate(world, random, x, y, z))
+            {
+                world.setBlock(x, y, z, this, meta, 2);
+            }
+        }
+    }
 
-	@Override
-	public void onPlantGrow(World world, int x, int y, int z, int sourceX, int sourceY, int sourceZ) {
-		if (this == FuelcraftBlocks.lightForestDirt || this == FuelcraftBlocks.lightForestGrass)
-		{
-			world.setBlock(x, y, z, FuelcraftBlocks.lightForestDirt, 0, 2);
-		}
-	}
+    @Override
+    public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable)
+    {
+        Block block = world.getBlock(x, y, z);
+        return block == FuelcraftBlocks.lightForestDirt || block == FuelcraftBlocks.lightForestGrass;
+    }
+
+    @Override
+    public void onPlantGrow(World world, int x, int y, int z, int sourceX, int sourceY, int sourceZ)
+    {
+        if (this == FuelcraftBlocks.lightForestDirt || this == FuelcraftBlocks.lightForestGrass)
+        {
+            world.setBlock(x, y, z, FuelcraftBlocks.lightForestDirt, 0, 2);
+        }
+    }
 }

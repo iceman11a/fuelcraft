@@ -11,36 +11,36 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFuelcraftBase extends Block
 {
-	public String blockName;
+    public String blockName;
 
-	@SideOnly(Side.CLIENT)
-	protected IIcon[] icons;
+    @SideOnly(Side.CLIENT)
+    protected IIcon[] icons;
 
-	public BlockFuelcraftBase(String name, float hardness)
-	{
-		this(name, hardness, Material.rock);
-		this.setStepSound(soundTypeStone);
-	}
+    public BlockFuelcraftBase(String name, float hardness)
+    {
+        this(name, hardness, Material.rock);
+        this.setStepSound(soundTypeStone);
+    }
 
-	public BlockFuelcraftBase(String name, float hardness, Material material)
-	{
-		super(material);
-		this.setHardness(hardness);
-		this.setCreativeTab(Fuelcraft.tabFuelcraft);
-		this.setBlockName(name);
-		this.setBlockTextureName(ReferenceTextures.getTileName(name));
-	}
+    public BlockFuelcraftBase(String name, float hardness, Material material)
+    {
+        super(material);
+        this.setHardness(hardness);
+        this.setCreativeTab(Fuelcraft.tabFuelcraft);
+        this.setBlockName(name);
+        this.setBlockTextureName(ReferenceTextures.getTileName(name));
+    }
 
-	@Override
-	public Block setBlockName(String name)
-	{
-		this.blockName = name;
-		return super.setBlockName(ReferenceNames.getPrefixedName(name));
-	}
+    @Override
+    public Block setBlockName(String name)
+    {
+        this.blockName = name;
+        return super.setBlockName(ReferenceNames.getPrefixedName(name));
+    }
 
-	@Override
-	public int damageDropped(int meta)
-	{
-		return meta;
-	}
+    @Override
+    public int damageDropped(int meta)
+    {
+        return meta;
+    }
 }

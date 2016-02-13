@@ -30,7 +30,7 @@ archivesBaseName = config.mod_id
 
 minecraft {
     version = config.minecraft_version + "-" + config.forge_version
-    assetDir = "eclipse/assets"
+    runDir = "eclipse/assets"
 
     ext.mod_version = "${config.mod_version}"
 
@@ -61,12 +61,12 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-    compile files('libs/buildcraft-1.7.10-7.1.13-dev.jar')
-    compile files('libs/forestry_1.7.10-4.1.1.46-api.jar')
-    compile files('libs/industrialcraft-2-2.2.793-experimental-api.jar')
-    compile files('libs/Railcraft-API-master.zip')
-    compile files('libs/Railcraft-1.7.10-9.8.0.0-dev.jar')
-    compile files('libs/Thaumcraft-1.7.10-4.2.3.5-api.zip')
+    //compile files('libs/buildcraft-1.7.10-7.1.13-dev.jar')
+    //compile files('libs/forestry_1.7.10-4.1.1.46-api.jar')
+    //compile files('libs/industrialcraft-2-2.2.793-experimental-api.jar')
+    //compile files('libs/Railcraft-API.zip')
+    //compile files('libs/Railcraft-1.7.10-9.8.0.0-dev.jar')
+    //compile files('libs/Thaumcraft-1.7.10-4.2.3.5-api.zip')
 }
 
 version = "${config.minecraft_version}-${project.minecraft.mod_version}"

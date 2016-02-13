@@ -4,14 +4,14 @@ import net.minecraft.inventory.IInventory;
 
 public class SlotSingleItem extends SlotGeneric
 {
-	public SlotSingleItem(IInventory inventory, int slot, int posX, int posY)
-	{
-		super(inventory, slot, posX, posY);
-	}
+    public SlotSingleItem(IInventory inventory, int slot, int posX, int posY)
+    {
+        super(inventory, slot, posX, posY);
+    }
 
-	@Override
-	public int getSlotStackLimit()
-	{
-		return 1;
-	}
+    @Override
+    public int getSlotStackLimit()
+    {
+        return 1;
+    }
 }

@@ -11,9 +11,6 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public abstract class WorldGenForestAbstractTree extends WorldGenerator
 {
-    @SuppressWarnings("unused")
-	private static final String __OBFID = "CL_00000399";
-
     public WorldGenForestAbstractTree(boolean p_i45448_1_)
     {
         super(p_i45448_1_);
